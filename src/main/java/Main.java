@@ -1,11 +1,9 @@
 import flowerstore.Flower;
+import flowerstore.FlowerType;
 
 public class Main {
     public static void main(String[] args) {
-        Flower[] flowers = new Flower[5];
-        int[] color = {127, 0, 0};
-//        for (int i = 0; i < flowers.length; i++){
-//            flowers[i] = new Flower();
-//        }
+        Flower flower = new Flower(10, 10, new int[] {1, 1, 1},FlowerType.CHAMOMILE);
+        System.out.println(flower);
     }
 }
