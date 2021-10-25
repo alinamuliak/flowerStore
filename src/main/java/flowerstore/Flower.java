@@ -7,7 +7,7 @@ import lombok.ToString;
 import java.util.Arrays;
 
 @Getter @Setter @ToString
-public class Flower extends Item{
+public class Flower{
     private double price;
     private double sepalLength;
     private int[] color;
