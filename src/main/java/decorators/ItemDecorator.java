@@ -15,7 +15,7 @@ public class ItemDecorator extends Item {
     }
 
     @Override
-    public double getDescription() {
+    public String getDescription() {
         return item.getDescription();
     }
 }
