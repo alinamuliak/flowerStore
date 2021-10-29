@@ -22,4 +22,15 @@ public class FlowerBucket extends Item{
         }
         return price;
     }
+
+    /**
+     * Return true if given flower is in this flower bucket.
+     * False otherwise.
+     * @param flower Flower object representing the flower the user is looking for
+     * @return boolean
+     */
+    public boolean searchFlower(Flower flower) {
+        //pass
+        return true;
+    }
 }
