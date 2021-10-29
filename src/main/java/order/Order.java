@@ -2,14 +2,15 @@ package order;
 
 import delivery.Delivery;
 import flowerstore.Item;
+import lombok.Getter;
 import lombok.ToString;
 import payment.Payment;
 
 import java.util.LinkedList;
 
-@ToString
+@Getter @ToString
 public class Order {
-    private LinkedList<Item> items;
+    private LinkedList<Item> items = new LinkedList<>();
     private Payment payment;
     private Delivery delivery;
 
@@ -29,8 +30,9 @@ public class Order {
         return price;
     }
 
-    public void processOrder() {
+    public int processOrder() {
         System.out.println("Your order is being processed...\nDone! Your order is ready!");
+        return 0;
     }
 
     public void addItem(Item item) {
