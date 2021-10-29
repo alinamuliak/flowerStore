@@ -2,8 +2,8 @@ package delivery;
 
 import flowerstore.Item;
 
-import java.util.List;
+import java.util.LinkedList;
 
 public interface Delivery {
-    int deliver(List<Item> items);
+    int deliver(LinkedList<Item> items);
 }
