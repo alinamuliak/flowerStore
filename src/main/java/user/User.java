@@ -1,7 +1,9 @@
 package user;
 
+import lombok.Getter;
 
-public interface User {
-    int id = IdCounter.createId();
-    void update(String status);
+@Getter
+public abstract class User {
+    private int id = IdCounter.createId();
+    abstract public void update(String status);
 }
