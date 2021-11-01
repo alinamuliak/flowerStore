@@ -1,7 +1,7 @@
 package user;
 
 public class Receiver implements User {
-    public void update(boolean status) {
-        System.out.println("Receiver updated!)");
+    public void update(String status) {
+        System.out.println("Receiver updated with message: " + status);
     }
 }
