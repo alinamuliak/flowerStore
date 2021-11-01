@@ -16,6 +16,7 @@ public class Order {
     private LinkedList<Item> items = new LinkedList<>();
     private Payment payment;
     private Delivery delivery;
+    private int currentId = 0;
 
     public void setPaymentStrategy(Payment payment) {
         this.payment = payment;
@@ -27,7 +28,7 @@ public class Order {
 
     public double calculateTotalPrice() {
         double price = 0;
-        for (Item item : this.items) {
+        for (Item item : items) {
             price += item.getPrice();
         }
         return price;
@@ -47,6 +48,7 @@ public class Order {
     }
 
     public void addUser(User user) {
+        currentId++;
         users.add(user);
     }
 
@@ -63,5 +65,4 @@ public class Order {
     public void order() {
         notifyUsers("Your order is ready!");
     }
-
 }
