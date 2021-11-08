@@ -12,7 +12,7 @@ import java.util.List;
 
 @Getter @ToString
 public class Order {
-    private List<User> users;
+    private List<User> users = new LinkedList<>();
     private LinkedList<Item> items = new LinkedList<>();
     private Payment payment;
     private Delivery delivery;
@@ -56,13 +56,14 @@ public class Order {
         users.remove(user);
     }
 
-    public void notifyUsers(String status) {
+    public int notifyUsers(String status) {
         for (User user: users) {
             user.update(status);
         }
+        return 0;
     }
 
-    public void order() {
-        notifyUsers("Your order is ready!");
+    public int order() {
+        return notifyUsers("Your order is ready!");
     }
 }

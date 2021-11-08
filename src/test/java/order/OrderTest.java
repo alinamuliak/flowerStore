@@ -10,6 +10,9 @@ import org.junit.jupiter.api.Test;
 import payment.CreditCardPaymentStrategy;
 import payment.PayPalPaymentStrategy;
 import payment.Payment;
+import user.Receiver;
+import user.Sender;
+import user.User;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,6 +25,9 @@ class OrderTest {
     private Flower flower2;
     private Flower flower3;
 
+    private User user1;
+    private User user2;
+
     @BeforeEach
     void setUp() {
         this.order1 = new Order();
@@ -32,85 +38,111 @@ class OrderTest {
         this.flower2 = new Flower(25, 5, new int[]{1, 2, 3, 4}, FlowerType.CHAMOMILE);
         this.flower3 = new Flower(15, 5, new int[]{1, 2, 3, 4}, FlowerType.CHAMOMILE);
 
+        this.user1 = new Sender();
+        this.user2 = new Receiver();
     }
 
     @Test
     void setPaymentStrategy() {
         Payment creditCard = new CreditCardPaymentStrategy();
         Payment payPal = new PayPalPaymentStrategy();
-        this.order1.setPaymentStrategy(creditCard);
-        this.order2.setPaymentStrategy(payPal);
-        this.order3.setPaymentStrategy(payPal);
+        order1.setPaymentStrategy(creditCard);
+        order2.setPaymentStrategy(payPal);
+        order3.setPaymentStrategy(payPal);
 
-        assertSame(creditCard, this.order1.getPayment());
-        assertSame(payPal, this.order2.getPayment());
-        assertSame(payPal, this.order3.getPayment());
+        assertSame(creditCard, order1.getPayment());
+        assertSame(payPal, order2.getPayment());
+        assertSame(payPal, order3.getPayment());
     }
 
     @Test
     void setDeliveryStrategy() {
         Delivery dhl = new DHLDeliveryStrategy();
         Delivery post = new PostDeliveryStrategy();
-        this.order1.setDeliveryStrategy(post);
-        this.order2.setDeliveryStrategy(post);
-        this.order3.setDeliveryStrategy(dhl);
+        order1.setDeliveryStrategy(post);
+        order2.setDeliveryStrategy(post);
+        order3.setDeliveryStrategy(dhl);
 
-        assertSame(post, this.order1.getDelivery());
-        assertSame(post, this.order2.getDelivery());
-        assertSame(dhl, this.order3.getDelivery());
+        assertSame(post, order1.getDelivery());
+        assertSame(post, order2.getDelivery());
+        assertSame(dhl, order3.getDelivery());
     }
 
     @Test
     void addItem() {
-        this.order1.addItem(this.flower1);
-        this.order1.addItem(this.flower2);
-        this.order2.addItem(this.flower2);
-        this.order2.addItem(this.flower3);
-        this.order3.addItem(this.flower1);
-        this.order3.addItem(this.flower3);
+        order1.addItem(flower1);
+        order1.addItem(flower2);
+        order2.addItem(flower2);
+        order2.addItem(flower3);
+        order3.addItem(flower1);
+        order3.addItem(flower3);
 
-        assertArrayEquals(new Flower[]{flower1, flower2}, this.order1.getItems().toArray());
-        assertArrayEquals(new Flower[]{flower2, flower3}, this.order2.getItems().toArray());
-        assertArrayEquals(new Flower[]{flower1, flower3}, this.order3.getItems().toArray());
+        assertArrayEquals(new Flower[]{flower1, flower2}, order1.getItems().toArray());
+        assertArrayEquals(new Flower[]{flower2, flower3}, order2.getItems().toArray());
+        assertArrayEquals(new Flower[]{flower1, flower3}, order3.getItems().toArray());
     }
 
     @Test
     void calculateTotalPrice() {
-        this.order1.addItem(this.flower1);
-        this.order1.addItem(this.flower2);
-        this.order2.addItem(this.flower2);
-        this.order2.addItem(this.flower3);
-        this.order3.addItem(this.flower1);
-        this.order3.addItem(this.flower3);
+        order1.addItem(flower1);
+        order1.addItem(flower2);
+        order2.addItem(flower2);
+        order2.addItem(flower3);
+        order3.addItem(flower1);
+        order3.addItem(flower3);
 
-        assertEquals(45, this.order1.calculateTotalPrice());
-        assertEquals(40, this.order2.calculateTotalPrice());
-        assertEquals(35, this.order3.calculateTotalPrice());
+        assertEquals(45, order1.calculateTotalPrice());
+        assertEquals(40, order2.calculateTotalPrice());
+        assertEquals(35, order3.calculateTotalPrice());
     }
 
     @Test
     void processOrder() {
-        assertEquals(0, this.order1.processOrder());
-        assertEquals(0, this.order2.processOrder());
-        assertEquals(0, this.order3.processOrder());
+        assertEquals(0, order1.processOrder());
+        assertEquals(0, order2.processOrder());
+        assertEquals(0, order3.processOrder());
     }
 
     @Test
     void removeItem() {
-        this.order1.addItem(this.flower1);
-        this.order1.addItem(this.flower2);
-        this.order1.removeItem(this.flower1);
+        order1.addItem(flower1);
+        order1.addItem(flower2);
+        order1.removeItem(flower1);
 
-        this.order2.addItem(this.flower2);
-        this.order2.addItem(this.flower3);
-        this.order2.removeItem(this.flower2);
+        order2.addItem(flower2);
+        order2.addItem(flower3);
+        order2.removeItem(flower2);
 
-        this.order3.addItem(this.flower1);
-        this.order3.addItem(this.flower3);
-        this.order3.removeItem(this.flower3);
+        order3.addItem(flower1);
+        order3.addItem(flower3);
+        order3.removeItem(flower3);
 
-        assertArrayEquals(new Flower[]{this.flower2}, this.order1.getItems().toArray());
-        assertArrayEquals(new Flower[]{this.flower3}, this.order2.getItems().toArray());
-        assertArrayEquals(new Flower[]{this.flower1}, this.order3.getItems().toArray());
+        assertArrayEquals(new Flower[]{flower2}, order1.getItems().toArray());
+        assertArrayEquals(new Flower[]{flower3}, order2.getItems().toArray());
+        assertArrayEquals(new Flower[]{flower1}, order3.getItems().toArray());
+    }
+
+    @Test
+    void addUser() {
+        order1.addUser(user1);
+        order1.addUser(user2);
+        assertArrayEquals(new User[]{user1, user2}, order1.getUsers().toArray());
+    }
+
+    @Test
+    void removeUser() {
+        order1.addUser(user1);
+        order1.addUser(user2);
+        assertArrayEquals(new User[]{user1, user2}, this.order1.getUsers().toArray());
+
+        order1.removeUser(user1);
+        assertArrayEquals(new User[]{user2}, this.order1.getUsers().toArray());
+    }
+
+    @Test
+    void order() {
+        assertEquals(0, order1.order());
+        assertEquals(0, order2.order());
+        assertEquals(0, order3.order());
     }
 }
