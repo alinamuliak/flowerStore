@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Setter @Getter
-public class FlowerBucket{
+public class FlowerBucket extends Item {
     private List<FlowerPack> flowerPacks = new ArrayList<>();
 
 
