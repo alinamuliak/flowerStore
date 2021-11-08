@@ -23,9 +23,9 @@ class ItemDecoratorTest {
 
     @Test
     void getPricePaperDecorator() {
-        PaperDecorator paper1 = new PaperDecorator(this.flower1);
-        PaperDecorator paper2 = new PaperDecorator(this.flower2);
-        PaperDecorator paper3 = new PaperDecorator(this.flower3);
+        PaperDecorator paper1 = new PaperDecorator(flower1);
+        PaperDecorator paper2 = new PaperDecorator(flower2);
+        PaperDecorator paper3 = new PaperDecorator(flower3);
 
         assertEquals(113, paper1.getPrice());
         assertEquals(263, paper2.getPrice());
@@ -34,9 +34,9 @@ class ItemDecoratorTest {
 
     @Test
     void getPriceBasketDecorator() {
-        BasketDecorator basketDecorator1 = new BasketDecorator(this.flower1);
-        BasketDecorator basketDecorator2 = new BasketDecorator(this.flower2);
-        BasketDecorator basketDecorator3 = new BasketDecorator(this.flower3);
+        BasketDecorator basketDecorator1 = new BasketDecorator(flower1);
+        BasketDecorator basketDecorator2 = new BasketDecorator(flower2);
+        BasketDecorator basketDecorator3 = new BasketDecorator(flower3);
 
         assertEquals(104, basketDecorator1.getPrice());
         assertEquals(254, basketDecorator2.getPrice());
@@ -45,9 +45,9 @@ class ItemDecoratorTest {
 
     @Test
     void getPriceRibbonDecorator() {
-        RibbonDecorator ribbon1 = new RibbonDecorator(this.flower1);
-        RibbonDecorator ribbon2 = new RibbonDecorator(this.flower2);
-        RibbonDecorator ribbon3 = new RibbonDecorator(this.flower3);
+        RibbonDecorator ribbon1 = new RibbonDecorator(flower1);
+        RibbonDecorator ribbon2 = new RibbonDecorator(flower2);
+        RibbonDecorator ribbon3 = new RibbonDecorator(flower3);
 
         assertEquals(140, ribbon1.getPrice());
         assertEquals(290, ribbon2.getPrice());
@@ -56,9 +56,9 @@ class ItemDecoratorTest {
 
     @Test
     void getPriceValentineDecorator() {
-        ValentineDecorator valentine1 = new ValentineDecorator(this.flower1);
-        ValentineDecorator valentine2 = new ValentineDecorator(this.flower2);
-        ValentineDecorator valentine3 = new ValentineDecorator(this.flower3);
+        ValentineDecorator valentine1 = new ValentineDecorator(flower1);
+        ValentineDecorator valentine2 = new ValentineDecorator(flower2);
+        ValentineDecorator valentine3 = new ValentineDecorator(flower3);
 
         assertEquals(70, valentine1.getPrice());
         assertEquals(175, valentine2.getPrice());

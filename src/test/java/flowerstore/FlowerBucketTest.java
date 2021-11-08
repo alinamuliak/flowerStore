@@ -13,6 +13,7 @@ class FlowerBucketTest {
     private FlowerPack tulips;
     private FlowerPack chamomiles;
     private FlowerBucket flowerBucket;
+
     @BeforeEach
     void setUp() {
         this.rose = new Flower(12, 6, new int[]{4, 3, 2}, FlowerType.ROSE);

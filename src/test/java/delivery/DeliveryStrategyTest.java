@@ -28,7 +28,7 @@ class DeliveryStrategyTest {
 
     @Test
     void deliver() {
-        assertEquals(0, this.dhlDelivery.deliver(this.items));
-        assertEquals(0, this.postDelivery.deliver(this.items));
+        assertEquals(0, dhlDelivery.deliver(items));
+        assertEquals(0, postDelivery.deliver(items));
     }
 }
